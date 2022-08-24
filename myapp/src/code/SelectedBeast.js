@@ -1,37 +1,52 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Modal from "react-bootstrap/Modal";
+import { ModalBody } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 class SelectedBeast extends React.Component {
-  render() {
-    const displayModal = this.props.displayModal;
-    const hideModal = this.props.hideModal;
-    const image = this.props.selectedBeast.image_url;
-    const title = this.props.selectedBeast.title;
-    const description = this.props.selectedBeast.description;
+    state = { show: false }
 
+    showModal = () => {
+      this.setState({ show: true });
+    }
+    
+    hideModal = () => {
+      this.setState({ show: false });
+    }
+    handleClose = () => {
+        this.setState({show :false})
+    }
+
+
+
+
+
+  render() {
     return (
-      <Modal show={displayModal} onHide={this.props.hideModal}>
-        <Modal.Dialog>
-          <Modal.Header>
-            <h2>{title}</h2>
-          </Modal.Header>
-          <Modal.Body>
-            <Card style={{ width: "26rem" }}>
-              <Card.Img src={image} />
-              <Card.Body>
-                <Card.Title>{title}</Card.Title>
-                <Card.Text>{description}</Card.Text>
-                
-                <Button onClick={hideModal} variant="primary" size="lg" block>
-                  See you later
-                </Button>
-              </Card.Body>
-            </Card>
-          </Modal.Body>
-        </Modal.Dialog>
-      </Modal>
+        <>
+        <Modal style = {{justifyContent:"center" , alignItems:"center" , textAlign:"center"}} show={this.state.show} handleClose={this.hideModal} >
+            <p> {this.props.title} </p>
+            <img src = {this.props.url}/>
+            <p> {this.props.dis}</p>
+            
+
+
+
+      <Modal.Footer>
+        <Button style ={{width:"50px" , height :"50px"}}onClick={this.handleClose} variant="secondary" >Close</Button>
+       
+      </Modal.Footer>
+    
+    </Modal>
+     <button style ={{width:"200px" , height :"200px" ,overflow:"hidden" ,
+     backgroundColor: "Transparent",
+     backgroundRepeat:"no-repeat",
+     border: "none" 
+    
+    
+    }} type='image' onClick={this.showModal}></button>
+     
+     </>
     );
   }
 }

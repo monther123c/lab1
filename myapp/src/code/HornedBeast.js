@@ -1,134 +1,152 @@
-
-//i leave this place empty cuz of the old code i delete
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
+import ModelBeast from "./SelectedBeast";
+import Col from 'react-bootstrap/Col';
+
 
 class HornedBeast extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      counter: "",
+      numofhearts: "",
+      counter: 0,
+      
+      title:this.props.title,
+      url:this.props.imgURL,
+      dis:this.props.dis
     };
   }
-
-  increamentFavHeart = () => {
+  increaseNumberOfHearts = () => {
     this.setState({
-      counter: this.state.counter + "😍",
+      counter: this.state.counter + 1,
+      numofhearts: this.state.numofhearts + "😍",
     });
+    
   };
+
+  getInfo = () =>{
+
+ 
+
+    
+
+  }
+
 
   render() {
     return (
+      <> 
       <Col>
-        <Card style={{ width: "18rem", textAlign: "center" }}>
-          <Card.Title>{this.props.title}</Card.Title>
-          <Card.Body>
-            <Card.Img
-              variant="top"
-              src={this.props.image}
-              title={this.props.title}
-              onClick={this.increamentFavHeart}
-            />
-            <Card.Text>
-              <p>{this.props.descr}</p>
-              <h3>Favorites: {this.state.counter}</h3>
-            </Card.Text>
-          </Card.Body>
-        </Card>
+      <Card onClick={this.increaseNumberOfHearts}  className = "container"
+        style={{
+          width: "18rem",
+          border: "4px solid rgba(106,147,240,255)",
+          width: "250px",
+          height: "500px",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          margin: "30px",
+          borderRadius: "20px",
+          backgroundColor: "black",
+        }}
+      >
+        <h2 style={{ color: "rgba(140,45,226,255)" }}> {this.props.title}</h2>
+        <Card.Img className= "container-img "
+          style={{
+            border: "2px solid rgba(140,45,226,255)",
+            width: "200px",
+            height: "200px",
+            borderRadius: "20px",
+          }}
+          variant=""
+          src={this.props.imgURL}
+          
+        />
+        <Card.Body>
+          <Card.Title style={{ color: "rgba(140,45,226,255)" }}>
+            {this.props.name}
+          </Card.Title>
+          <Card.Text style={{ color: "rgba(140,45,226,255)" }}>
+            {this.props.dis}{" "}
+          </Card.Text>
+          <Card.Text
+            style={{
+              color: "red",
+              fontSize: "20px",
+              fontWeight: "bold",
+              FormText: "Times New Roman, Times, serif",
+            }}
+          >
+            Favorties: {this.state.counter}
+            <br></br> {this.state.numofhearts}
+          </Card.Text>
+        </Card.Body>
+      
+      <div   className = "container-btn">
+      <  ModelBeast   name = {this.props.name} url = {this.props.imgURL} dis = {this.props.dis} title = {this.props.title} />
+      </div>
+      </Card>
       </Col>
+      
+     
+       </>
+ 
     );
   }
 }
 
 export default HornedBeast;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
